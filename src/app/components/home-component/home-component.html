@@ -1,0 +1,72 @@
+<p>{{mensajeSaludo}}</p>
+
+<div class="container py-4">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    
+    @for (hospital of arrayHospitales; track hospital.idHospital) {
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 rounded-3">
+          
+          <!-- Encabezado con ID y estado/capacidad -->
+          <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center py-3">
+            <span class="badge bg-light text-primary fw-bold">
+              ID: #{{ hospital.idHospital }}
+            </span>
+            <span class="small">
+              <i class="bi bi-hospital me-1"></i> Centro Médico
+            </span>
+          </div>
+
+          <!-- Cuerpo de la tarjeta -->
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark mb-3">
+              {{ hospital.nombre }}
+            </h5>
+
+            <ul class="list-unstyled text-secondary mb-0">
+              <li class="mb-2 d-flex align-items-start">
+                <i class="bi bi-geo-alt-fill text-danger me-2 mt-1"></i>
+                <span>{{ hospital.direccion }}</span>
+              </li>
+              
+              <li class="mb-2 d-flex align-items-center">
+                <i class="bi bi-telephone-fill text-success me-2"></i>
+                <a [href]="'tel:' + hospital.telefono" class="text-decoration-none text-secondary">
+                  {{ hospital.telefono }}
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Pie de tarjeta con el número de camas y acciones -->
+          <div class="card-footer bg-body-tertiary border-top-0 d-flex justify-content-between align-items-center py-3">
+            <div>
+              <span class="text-muted small d-block">Capacidad</span>
+              <span class="fw-bold text-primary fs-5">
+                {{ hospital.camas }} <small class="fs-6 fw-normal text-muted">camas</small>
+              </span>
+            </div>
+
+            <div class="btn-group">
+              <button [routerLink]="['/updatehospital/' + hospital.idHospital]" type="button" class="btn btn-outline-primary btn-sm">
+                Modificar
+              </button>
+              <button [routerLink]="['/deletehospital/' + hospital.idHospital]" type="button" class="btn btn-outline-secondary btn-sm">
+                Eliminar
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    } @empty {
+      <div class="col-12">
+        <div class="alert alert-info text-center" role="alert">
+          No hay hospitales registrados en este momento.
+        </div>
+      </div>
+    }
+
+  </div>
+</div>
+

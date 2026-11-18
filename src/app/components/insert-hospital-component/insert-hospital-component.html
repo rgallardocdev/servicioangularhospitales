@@ -1,0 +1,83 @@
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">Gestión de Hospital</h4>
+    </div>
+    <div class="card-body">
+      <form #form="ngForm">
+        
+        <!-- idHospital: number -->
+        <div class="mb-3">
+          <label class="form-label">ID del Hospital</label>
+          <input 
+            type="number" 
+            class="form-control" 
+            name="cajaid" 
+            #cajaid
+            placeholder="Ej. 101" 
+            required>
+        </div>
+
+        <!-- nombre: string -->
+        <div class="mb-3">
+          <label class="form-label">Nombre del Hospital</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            name="cajanombre" 
+            #cajanombre
+            placeholder="Ej. Hospital Universitario La Paz" 
+            required>
+        </div>
+
+        <!-- direccion: string -->
+        <div class="mb-3">
+          <label class="form-label">Dirección</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            name="cajadireccion" 
+            #cajadireccion
+            placeholder="Ej. Paseo de la Castellana, 261" 
+            required>
+        </div>
+
+        <!-- Fila dividida para teléfono y camas -->
+        <div class="row">
+          <!-- telefono: string -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Teléfono</label>
+            <input 
+              type="tel" 
+              class="form-control" 
+              name="cajatelefono" 
+              #cajatelefono
+              placeholder="Ej. 917 27 70 00" 
+              required>
+          </div>
+
+          <!-- camas: number -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Número de Camas</label>
+            <input 
+              type="number" 
+              class="form-control" 
+              name="cajacamas" 
+              #cajacamas
+              min="0" 
+              placeholder="Ej. 500" 
+              required>
+          </div>
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="d-flex justify-content-end gap-2 mt-3">
+          <button type="reset" class="btn btn-secondary">Limpiar</button>
+          <button (click)="insertarHospital()" type="submit" class="btn btn-primary">Guardar Hospital</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
