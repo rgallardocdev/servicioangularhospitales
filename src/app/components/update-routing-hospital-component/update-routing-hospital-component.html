@@ -7,52 +7,48 @@
             <h5 class="mb-0">Modificar Hospital</h5>
         </div>
         <div class="card-body">
-            <form #hospitalForm="ngForm" (ngSubmit)="modificarHospital()">
+            <form #hospitalForm="ngForm">
                 
                 <!-- Campo oculto o solo lectura para idHospital -->
-                <input type="hidden" name="idHospital" [(ngModel)]="_hospital.idHospital">
+                <input type="hidden" name="idHospital" [(ngModel)]="this._idHospital">
 
                 <div class="row g-3">
                     <!-- ID Hospital (Visible solo como referencia, deshabilitado) -->
                     <div class="col-md-3">
                         <label for="idHospital" class="form-label">ID Hospital</label>
                         <input type="number" class="form-control" id="idHospital" 
-                               [value]="hospital.idHospital" disabled readonly>
+                               [value]="_idHospital" disabled readonly>
                     </div>
 
                     <!-- Nombre -->
                     <div class="col-md-9">
-                        <label for="nombre" class="form-label">Nombre del Hospital</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" 
-                               [(ngModel)]="hospital.nombre" required>
+                        <label for="cajanombre" class="form-label">Nombre del Hospital</label>
+                        <input type="text" class="form-control" id="cajanombre" name="cajanombre" #cajanombre>
                     </div>
 
                     <!-- Dirección -->
                     <div class="col-12">
-                        <label for="direccion" class="form-label">Dirección</label>
-                        <input type="text" class="form-control" id="direccion" name="direccion" 
-                               [(ngModel)]="hospital.direccion" required>
+                        <label for="cajadireccion" class="form-label">Dirección</label>
+                        <input type="text" class="form-control" id="cajadireccion" name="cajadireccion" #cajadireccion>
                     </div>
 
                     <!-- Teléfono -->
                     <div class="col-md-6">
-                        <label for="telefono" class="form-label">Teléfono</label>
-                        <input type="tel" class="form-control" id="telefono" name="telefono" 
-                               [(ngModel)]="hospital.telefono" required>
+                        <label for="cajatelefono" class="form-label">Teléfono</label>
+                        <input type="tel" class="form-control" id="cajatelefono" name="cajatelefono" #cajatelefono>
                     </div>
 
                     <!-- Camas -->
                     <div class="col-md-6">
-                        <label for="camas" class="form-label">Número de Camas</label>
-                        <input type="number" class="form-control" id="camas" name="camas" 
-                               [(ngModel)]="hospital.camas" min="0" required>
+                        <label for="cajacamas" class="form-label">Número de Camas</label>
+                        <input type="number" class="form-control" id="cajacamas" name="cajacamas" #cajacamas>
                     </div>
                 </div>
 
                 <!-- Botones -->
                 <div class="mt-4 d-flex justify-content-end gap-2">
-                    <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
-                    <button type="submit" class="btn btn-warning" [disabled]="hospitalForm.invalid">
+                    <!-- <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button> -->
+                    <button (click)="modificarRoutingHospital()" class="btn btn-warning">
                         Guardar Cambios
                     </button>
                 </div>

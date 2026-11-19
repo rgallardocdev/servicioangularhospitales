@@ -35,19 +35,20 @@ export class UpdateRoutingHospitalComponent implements OnInit {
     this._active.params.subscribe(async (params: Params) => {
       let _id = params['id'];
       this._idHospital = _id;
-      this.mensajeProcesoRouting = "Dpto. recibido: " + _id;
+      this.mensajeProcesoRouting = "Hospital. recibido: " + _id;
       this._cdr.detectChanges();
     })    
   }
 
-  async modificarDpto(): Promise<void>{
+  async modificarRoutingHospital(): Promise<void>{
+    console.log("entrando");
     let _nombre = this._cajanombre.nativeElement.value;
     let _direccion = this._cajadireccion.nativeElement.value;
     let _telefono = this._cajatelefono.nativeElement.value;
-    let _camas = this._cajacamas.nativeElement.value;    
-    let _dpto = new miHospital(this._idHospital,_nombre,_direccion, _telefono, _camas);
-    let response = await this._service.putHospitalAsync(_dpto);
-    this.mensajeProcesoModificar = "Dpto. modificado: " + this._idHospital;
+    let _camas = parseInt(this._cajacamas.nativeElement.value);    
+    let _hospital = new miHospital(this._idHospital,_nombre,_direccion, _telefono, _camas);
+    let response = await this._service.putHospitalAsync(_hospital);
+    this.mensajeProcesoModificar = "Hospital. modificado: " + this._idHospital;
     this._cdr.detectChanges();
   }
 
